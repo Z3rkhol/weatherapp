@@ -1,9 +1,18 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import './css/Tokyo.css'; // You might need to adjust CSS file paths or reuse Berlin.css
 
-function Tokyo({ weatherData }) {
+function Tokyo() {
+    const location = useLocation();
+    const weatherData = location.state.weatherData;
+    const loggedIn = localStorage.getItem('loggedIn');
+
+    if (!loggedIn) {
+      return <Navigate to="/" />;
+    }
+
     if (!weatherData) {
         return <div>Loading weather data...</div>;
     }

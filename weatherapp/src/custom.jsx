@@ -1,18 +1,12 @@
 import React from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import './css/Berlin.css';
+import './css/custom.css'; // Import your custom CSS file
 
-function Berlin() {
-    
+function CustomLocationWeather() {
     const location = useLocation();
     const weatherData = location.state.weatherData;
-    const loggedIn = localStorage.getItem('loggedIn');
-
-    if (!loggedIn) {
-      return <Navigate to="/" />;
-    }
 
     if (!weatherData) {
         return <div>Loading weather data...</div>;
@@ -30,10 +24,6 @@ function Berlin() {
             html: forecastHtml,
             showCloseButton: true,
         });
-    };    
-
-    const getWeatherIcon = (conditionCode) => {
-        return `/path/to/icons/${conditionCode}.png`;
     };
 
     const getWeatherCondition = (conditionCode) => {
@@ -72,14 +62,12 @@ function Berlin() {
     };
 
     const todayWeather = weatherData.current;
-    const todayIcon = getWeatherIcon(todayWeather.weather_code);
     const weatherCondition = getWeatherCondition(todayWeather.weather_code);
 
     return (
         <div className="weather-container">
-            <h2 className="city-name">Berlin</h2>
+            <h2 className="city-name">Custom Location</h2>
             <div className="current-weather">
-                <div className="weather-icon" style={{ backgroundImage: `url(${todayIcon})` }}></div>
                 <div className="current-temperature">
                     Temperature: {todayWeather.temperature_2m}°C
                 </div>
@@ -99,4 +87,4 @@ function Berlin() {
     );
 }
 
-export default Berlin;
+export default CustomLocationWeather;

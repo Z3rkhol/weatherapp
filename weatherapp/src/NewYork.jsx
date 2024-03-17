@@ -1,14 +1,22 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import './css/NewYork.css'; // Create and customize your New York CSS accordingly
+import './css/NewYork.css';
 
-function NewYork({ weatherData }) {
+function NewYork() {
+    const location = useLocation();
+    const weatherData = location.state.weatherData;
+    const loggedIn = localStorage.getItem('loggedIn');
+
+    if (!loggedIn) {
+      return <Navigate to="/" />;
+    }
+
     if (!weatherData) {
         return <div>Loading weather data...</div>;
     }
 
     const getWeatherIcon = (conditionCode) => {
-        // Adjust the path to your weather icons
         return `/path/to/icons/${conditionCode}.png`;
     };
 

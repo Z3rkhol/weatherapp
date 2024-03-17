@@ -1,9 +1,18 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import './css/Prague.css'; // Ensure to adjust CSS for Prague accordingly
+import './css/Prague.css';
 
-function Prague({ weatherData }) {
+function Prague() {
+    const location = useLocation();
+    const weatherData = location.state.weatherData;
+    const loggedIn = localStorage.getItem('loggedIn');
+
+    if (!loggedIn) {
+      return <Navigate to="/" />;
+    }
+
     if (!weatherData) {
         return <div>Loading weather data...</div>;
     }

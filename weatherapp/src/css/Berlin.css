@@ -1,25 +1,27 @@
 .weather-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #e9eff9 0%, #eff2f9 100%);
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh;
 }
 
 .current-weather {
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    color: #fff;
     padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 300px; /* Adjust as needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    max-width: 400px; /* Adjust the maximum width as needed */
+    width: 100%; /* Ensure the current weather section doesn't exceed the maximum width */
+    text-align: center; /* Center the content */
+    margin-top: 20px; /* Add margin to separate the current weather section from the city name */
 }
 
-.current-weather:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+.city-name {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: black; /* Ensure the city name is displayed in black color */
 }
 
 .weather-icon {
@@ -44,12 +46,6 @@
 .other-details {
     font-size: 1rem;
     color: #555;
-}
-
-.city-name {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 2rem;
 }
 
 .forecast-button {
